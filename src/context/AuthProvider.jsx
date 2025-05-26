@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      console.log("user in the auth state change", currentUser);
+      //   console.log("user in the auth state change", currentUser);
     });
     return () => unsubscribe();
   }, []);
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
     loginUser,
     logoutUser,
   };
-  console.log(children);
+
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };
 
