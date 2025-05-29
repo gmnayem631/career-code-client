@@ -9,7 +9,6 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
-import { tr } from "motion/react-client";
 
 const googleProvider = new GoogleAuthProvider();
 
