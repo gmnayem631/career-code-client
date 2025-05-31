@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import React from "react";
 import team1 from "../../assets/team-1.jpg";
 import team2 from "../../assets/team-2.jpg";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -52,7 +53,9 @@ const Banner = () => {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <Link to={"/register"} className="btn btn-primary">
+            Get Started
+          </Link>
         </div>
       </div>
     </div>
