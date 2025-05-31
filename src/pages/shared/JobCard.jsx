@@ -1,7 +1,7 @@
 import React from "react";
 
 const JobCard = ({ job }) => {
-  const { description, title } = job;
+  const { title, description, category } = job;
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
@@ -13,7 +13,7 @@ const JobCard = ({ job }) => {
       <div className="card-body">
         <h2 className="card-title">
           {title}
-          <div className="badge badge-secondary">NEW</div>
+          <div className="badge badge-secondary">{category}</div>
         </h2>
         <p>{description}</p>
         <div className="card-actions justify-end">
