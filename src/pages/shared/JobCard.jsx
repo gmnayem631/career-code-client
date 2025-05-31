@@ -48,8 +48,11 @@ const JobCard = ({ job }) => {
           ))}
         </div>
         <div className="card-actions justify-end mt-3">
-          <Link to={`/jobs/${_id}`} className="btn btn-primary">
-            Apply Now
+          <Link
+            to={`/jobs/${_id}`}
+            className="btn btn-primary hover:rounded-2xl transition-all duration-300"
+          >
+            Show Details
           </Link>
         </div>
       </div>
