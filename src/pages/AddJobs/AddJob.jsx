@@ -99,7 +99,7 @@ const AddJob = () => {
             <div className="">
               <label className="label">Minimum Salary</label>
               <input
-                name="salaryMin"
+                name="min"
                 type="text"
                 className="input"
                 placeholder="Minimum Salary"
@@ -108,7 +108,7 @@ const AddJob = () => {
             <div className="">
               <label className="label">Maximum Salary</label>
               <input
-                name="salaryMax"
+                name="max"
                 type="text"
                 className="input"
                 placeholder="Maximum Salary"
@@ -119,7 +119,7 @@ const AddJob = () => {
               <label className="label">Currency</label>
               <select
                 defaultValue="Pick a color"
-                name="category"
+                name="currency"
                 className="select"
               >
                 <option disabled={true}>Select a Currency</option>
@@ -131,6 +131,54 @@ const AddJob = () => {
             </div>
           </div>
         </fieldset>
+        {/* Job Description */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Job Description</legend>
+          <textarea
+            name="description"
+            className="textarea"
+            placeholder="Job Description"
+          ></textarea>
+        </fieldset>
+        {/* Job Requirements */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Job Requirements</legend>
+          <textarea
+            name="requirements"
+            className="textarea"
+            placeholder="Requirements (separated by comma)"
+          ></textarea>
+        </fieldset>{" "}
+        {/* Job Responsibilities */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Job Responsibilities</legend>
+          <textarea
+            name="responsibilities"
+            className="textarea"
+            placeholder="Responsibilities (separated by comma)"
+          ></textarea>
+        </fieldset>
+        {/* HR Related Information */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">HR Related Info</legend>
+
+          <label className="label">HR Name</label>
+          <input
+            name="hr_name"
+            type="text"
+            className="input"
+            placeholder="HR Name"
+          />
+
+          <label className="label">HR Email</label>
+          <input
+            name="hr_email"
+            type="email"
+            className="input"
+            placeholder="HR Email"
+          />
+        </fieldset>
+        <input type="submit" value="Add Job" className="btn" />
       </form>
     </div>
   );
