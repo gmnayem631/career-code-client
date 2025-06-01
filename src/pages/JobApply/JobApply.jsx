@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const JobApply = () => {
   const { id: jobId } = useParams();
-  const { user } = useAuth;
+  const { user } = useAuth();
   console.log(jobId, user);
 
   const handleApplyFormSubmit = (e) => {
@@ -16,6 +18,30 @@ const JobApply = () => {
     const resume = form.resume.value;
 
     console.log(linkedIn, gitHub, resume);
+
+    const application = {
+      jobId,
+      applicant: user.email,
+      linkedIn,
+      gitHub,
+      resume,
+    };
+
+    axios
+      .post("http://localhost:3000/applications", application)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.insertedId) {
+          Swal.fire({
+            title: "Submitted Successfully",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
