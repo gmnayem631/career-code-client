@@ -30,7 +30,7 @@ const JobApply = () => {
     axios
       .post("http://localhost:3000/applications", application)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.insertedId) {
           Swal.fire({
             title: "Submitted Successfully",
