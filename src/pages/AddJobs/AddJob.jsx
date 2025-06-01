@@ -1,10 +1,17 @@
 import React from "react";
 
 const AddJob = () => {
+  const handleAddAJob = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
+  };
   return (
     <div>
       <h2>Please add a job</h2>
-      <form>
+      <form onSubmit={handleAddAJob}>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
           <legend className="fieldset-legend">Basic Info</legend>
 
