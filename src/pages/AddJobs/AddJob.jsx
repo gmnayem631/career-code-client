@@ -1,5 +1,7 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddJob = () => {
   const { user } = useAuth();
@@ -25,6 +27,24 @@ const AddJob = () => {
     newJob.responsibilities = newJob.responsibilities
       .split(",")
       .map((resp) => resp.trim());
+
+    newJob.status = "active";
+
+    // save job to the database
+    axios
+      .post("http://localhost:3000/jobs", newJob)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "This New Job Has Been Saved and Published",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div>
@@ -118,7 +138,7 @@ const AddJob = () => {
         {/* Application Deadline */}
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
           <legend className="fieldset-legend">Application Deadline</legend>
-          <input type="date" className="input" />
+          <input type="date" className="input" name="deadline" />
         </fieldset>
         {/* Salary Range */}
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
