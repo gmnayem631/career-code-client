@@ -1,18 +1,28 @@
 import axios from "axios";
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import Swal from "sweetalert2";
 
 const ViewApplications = () => {
   const { job_id } = useParams();
   const applications = useLoaderData();
 
-  const handleStatusChange = (e, application) => {
-    console.log(e.target.value, application);
+  const handleStatusChange = (e, app_id) => {
+    console.log(e.target.value, app_id);
 
     axios
-      .patch(``, { status: e.target.value })
+      .patch(`http://localhost:3000/applications/${app_id}`, {
+        status: e.target.value,
+      })
       .then((res) => {
         console.log(res.data);
+        if (res.data.modifiedCount) {
+          Swal.fire({
+            title: "This New Job Has Been Saved and Published",
+            icon: "success",
+            draggable: true,
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
